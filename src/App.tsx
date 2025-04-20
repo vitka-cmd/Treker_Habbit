@@ -6,7 +6,7 @@ import { useState } from 'react'
 function App() {
   
   const [mass_local, setLocal] = useState([])
-  let mass_local_storage=  JSON.parse(localStorage.getItem('massive_treker'));
+  let mass_local_storage:any[] =  JSON.parse(localStorage.getItem('massive_treker'));
     if(mass_local_storage != null && mass_local_storage != undefined){
       console.log('1111111  ', mass_local_storage);
     }else{
@@ -36,7 +36,7 @@ function App() {
   //   dispatch(removeFromArray(index));
   // };
   const delete_habit = (element:any) => {
-    let mass_local_storage =  JSON.parse(localStorage.getItem('massive_treker'));
+    let mass_local_storage:any[] =  JSON.parse(localStorage.getItem('massive_treker'));
       mass_local_storage = mass_local_storage.filter((el) => {return el.id != element.id })
       setLocal(mass_local_storage)
       localStorage.removeItem('massive_treker')
