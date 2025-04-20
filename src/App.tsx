@@ -2,25 +2,36 @@ import './App.css'
 import { Link } from 'react-router-dom';
 // import { useSelector, useDispatch } from 'react-redux';
 // import { addToArray, removeFromArray } from './redux/arraySlice';
-import{  useState } from 'react'
-function App() {
-  interface object_use{
+import {  useState } from 'react'  
+interface object_use{
     id:number,
     taskinput_name:string,
     taskinput_description:string,
     goal:string
 
   }
-  const [mass_local, setLocal] = useState([])
-  let mass_local_storage =  JSON.parse(localStorage.getItem('massive_treker')|| "");
-    if(mass_local_storage != null && mass_local_storage != undefined){
+function App() {
+
+  let mass_local_storage:object_use[] = [];
+  const [mass_local, setLocal] = useState<object_use[]>([])
+  const q = localStorage.getItem('massive_treker');
+    if( q != null &&  q!= undefined){
+      mass_local_storage =  JSON.parse(q);
       console.log('1111111  ', mass_local_storage);
     }else{
-      mass_local_storage = [];
       console.log('22222222  ', mass_local_storage)
       localStorage.setItem('massive_treker', JSON.stringify(mass_local_storage))
 
     }
+  // let mass_local_storage: [] =  JSON.parse(localStorage.getItem('massive_treker'));
+  //   if(mass_local_storage != null && mass_local_storage != undefined){
+  //     console.log('1111111  ', mass_local_storage);
+  //   }else{
+  //     mass_local_storage = [];
+  //     console.log('22222222  ', mass_local_storage)
+  //     localStorage.setItem('massive_treker', JSON.stringify(mass_local_storage))
+
+  //   }
   //  const u = setInterval(function u() {
   //     mass_local_storage.map((el) =>{
   //       if(el.goal === 0){
@@ -42,7 +53,16 @@ function App() {
   //   dispatch(removeFromArray(index));
   // };
   const delete_habit = (element:object_use) => {
-    let mass_local_storage=  JSON.parse(localStorage.getItem('massive_treker') || '');
+    const q = localStorage.getItem('massive_treker');
+    // let mass_local_storage:object_use[]=  JSON.parse(q);
+    if( q != null &&  q!= undefined){
+      mass_local_storage =  JSON.parse(q);
+      console.log('1111111  ', mass_local_storage);
+    }else{
+      console.log('22222222  ', mass_local_storage)
+      localStorage.setItem('massive_treker', JSON.stringify(mass_local_storage))
+
+    }
       mass_local_storage = mass_local_storage.filter((el:object_use) => {return el.id != element.id })
       setLocal(mass_local_storage)
       localStorage.removeItem('massive_treker')
