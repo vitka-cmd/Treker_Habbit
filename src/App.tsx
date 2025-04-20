@@ -2,7 +2,7 @@ import './App.css'
 import { Link } from 'react-router-dom';
 // import { useSelector, useDispatch } from 'react-redux';
 // import { addToArray, removeFromArray } from './redux/arraySlice';
-import React, {  useState } from 'react'
+import{  useState } from 'react'
 function App() {
   interface object_use{
     id:number,
