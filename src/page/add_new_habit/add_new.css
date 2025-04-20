@@ -1,0 +1,44 @@
+
+.header{
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    flex-direction: row;
+    color: white;
+}
+
+button{
+    background-color: rgba(0, 0, 0, 0);
+    width: 70px;
+    height: 70px;
+}
+.header p{
+    font-size: 40px;
+    margin: 10px;
+    color: white;
+}
+.footer{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+}
+input{
+    width: 100%;
+    height: 30px;
+}
+.add{
+    width: 90%;
+    height: 50px;
+    border-radius: 50px;
+    margin-top: 30%;
+    color: white;
+    font-size: 30px;
+    background-color: rgb(150, 76, 220);
+    display: flex;
+    justify-content:center;
+}
+.main_block{
+    color: white;
+    font-size: 20px;
+}

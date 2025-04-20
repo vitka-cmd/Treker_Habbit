@@ -1,0 +1,19 @@
+:root{
+  background-color: rgba(0, 0, 0, 0.911);
+  }
+  header{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+  }
+  .header_left_part{
+    display: flex;
+    flex-direction: row;
+    font-size: 60px;
+  }
+  .header_left_part div{
+    margin: 10px;
+  }
