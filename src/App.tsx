@@ -6,7 +6,7 @@ import { useState } from 'react'
 function App() {
   
   const [mass_local, setLocal] = useState([])
-  let mass_local_storage: [] =  JSON.parse(localStorage.getItem('massive_treker'));
+  let mass_local_storage=  JSON.parse(localStorage.getItem('massive_treker'));
     if(mass_local_storage != null && mass_local_storage != undefined){
       console.log('1111111  ', mass_local_storage);
     }else{
@@ -36,20 +36,19 @@ function App() {
   //   dispatch(removeFromArray(index));
   // };
   const delete_habit = (element:any) => {
-    let mass_local_storage:[] =  JSON.parse(localStorage.getItem('massive_treker'));
-      mass_local_storage = mass_local_storage.filter((el:any) => {return el.id != element.id })
+    let mass_local_storage =  JSON.parse(localStorage.getItem('massive_treker'));
+      mass_local_storage = mass_local_storage.filter((el) => {return el.id != element.id })
       setLocal(mass_local_storage)
       localStorage.removeItem('massive_treker')
       localStorage.setItem('massive_treker', JSON.stringify(mass_local_storage))
       console.log(mass_local_storage)
    }
   const minus = (goal:string, id:number, element:any) =>{
-    // let mass_local_storage=  JSON.parse(localStorage.getItem('massive_treker'));
       let num= parseInt(goal, 10);
       console.log(num)
       num = num -1;
       if(num == 0){
-        mass_local_storage = mass_local_storage.filter((el:any) => {return el.id != id })
+        mass_local_storage = mass_local_storage.filter((el) => {return el.id != id})
         setLocal(mass_local_storage)
         localStorage.removeItem('massive_treker')
       localStorage.setItem('massive_treker', JSON.stringify(mass_local_storage))
