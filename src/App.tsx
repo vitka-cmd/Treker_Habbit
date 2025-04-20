@@ -2,11 +2,17 @@ import './App.css'
 import { Link } from 'react-router-dom';
 // import { useSelector, useDispatch } from 'react-redux';
 // import { addToArray, removeFromArray } from './redux/arraySlice';
-import { useState } from 'react'
+import React, {  useState } from 'react'
 function App() {
-  
+  interface object_use{
+    id:number,
+    taskinput_name:string,
+    taskinput_description:string,
+    goal:string
+
+  }
   const [mass_local, setLocal] = useState([])
-  let mass_local_storage:any[] =  JSON.parse(localStorage.getItem('massive_treker'));
+  let mass_local_storage =  JSON.parse(localStorage.getItem('massive_treker')|| "");
     if(mass_local_storage != null && mass_local_storage != undefined){
       console.log('1111111  ', mass_local_storage);
     }else{
@@ -35,20 +41,21 @@ function App() {
   // const handleRemove = (index:number) => {
   //   dispatch(removeFromArray(index));
   // };
-  const delete_habit = (element:any) => {
-    let mass_local_storage:any[] =  JSON.parse(localStorage.getItem('massive_treker'));
-      mass_local_storage = mass_local_storage.filter((el) => {return el.id != element.id })
+  const delete_habit = (element:object_use) => {
+    let mass_local_storage=  JSON.parse(localStorage.getItem('massive_treker') || '');
+      mass_local_storage = mass_local_storage.filter((el:object_use) => {return el.id != element.id })
       setLocal(mass_local_storage)
       localStorage.removeItem('massive_treker')
       localStorage.setItem('massive_treker', JSON.stringify(mass_local_storage))
       console.log(mass_local_storage)
    }
-  const minus = (goal:string, id:number, element:any) =>{
+  const minus = (goal:string, id:number, element:object_use) =>{
+    // let mass_local_storage=  JSON.parse(localStorage.getItem('massive_treker'));
       let num= parseInt(goal, 10);
       console.log(num)
       num = num -1;
       if(num == 0){
-        mass_local_storage = mass_local_storage.filter((el) => {return el.id != id})
+        mass_local_storage = mass_local_storage.filter((el:object_use) => {return el.id != id })
         setLocal(mass_local_storage)
         localStorage.removeItem('massive_treker')
       localStorage.setItem('massive_treker', JSON.stringify(mass_local_storage))
@@ -83,7 +90,7 @@ function App() {
       </header>
       <main>
         {
-          mass_local_storage.map((element) => {
+          mass_local_storage.map((element:object_use) => {
             if(element.goal != " ")
               return(
               
@@ -94,7 +101,7 @@ function App() {
               <div className='right'>
                 <div>
                   Осталось: {element.goal} дней
-                  <button onClick={() => minus(element.goal, element.id, element)}><svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="white" class="bi bi-patch-minus" viewBox="0 0 16 16">
+                  <button onClick={() => minus(element.goal, element.id, element)}><svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="white" className="bi bi-patch-minus" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M5.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5"/>
   <path d="m10.273 2.513-.921-.944.715-.698.622.637.89-.011a2.89 2.89 0 0 1 2.924 2.924l-.01.89.636.622a2.89 2.89 0 0 1 0 4.134l-.637.622.011.89a2.89 2.89 0 0 1-2.924 2.924l-.89-.01-.622.636a2.89 2.89 0 0 1-4.134 0l-.622-.637-.89.011a2.89 2.89 0 0 1-2.924-2.924l.01-.89-.636-.622a2.89 2.89 0 0 1 0-4.134l.637-.622-.011-.89a2.89 2.89 0 0 1 2.924-2.924l.89.01.622-.636a2.89 2.89 0 0 1 4.134 0l-.715.698a1.89 1.89 0 0 0-2.704 0l-.92.944-1.32-.016a1.89 1.89 0 0 0-1.911 1.912l.016 1.318-.944.921a1.89 1.89 0 0 0 0 2.704l.944.92-.016 1.32a1.89 1.89 0 0 0 1.912 1.911l1.318-.016.921.944a1.89 1.89 0 0 0 2.704 0l.92-.944 1.32.016a1.89 1.89 0 0 0 1.911-1.912l-.016-1.318.944-.921a1.89 1.89 0 0 0 0-2.704l-.944-.92.016-1.32a1.89 1.89 0 0 0-1.912-1.911z"/>
 </svg></button>
