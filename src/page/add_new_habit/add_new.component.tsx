@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import './add_new.css'
 // import { useDispatch, useSelector } from 'react-redux';
 // import { addToArray } from '../../redux/arraySlice';
@@ -21,7 +21,7 @@ const AddNewHabit = () => {
     // };
     
      const AddNewHabit = () =>{
-      let mass_local_storage=  JSON.parse(localStorage.getItem('massive_treker'));
+      let mass_local_storage =  JSON.parse(localStorage.getItem('massive_treker') || "");
       let id: number = Math.floor(Math.random() * 50)
         mass_local_storage.push({id ,taskinput_name, taskinput_description, goal})
         localStorage.removeItem('massive_treker')
